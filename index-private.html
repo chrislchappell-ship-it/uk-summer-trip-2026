@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chris & Carmen UK Summer Trip Itinerary</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --blue: #1e3a8a;
+      --teal: #0f766e;
+      --gold: #b45309;
+      --soft-blue: #e0f2fe;
+      --soft-green: #dcfce7;
+      --soft-gold: #fef3c7;
+      --border: #d8dee8;
+      --danger: #f97316;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #0f766e);
+      color: white;
+      padding: 48px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    header p {
+      margin: 4px 0;
+      font-size: 1.1rem;
+      opacity: 0.96;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    h2 {
+      color: var(--blue);
+      margin-top: 0;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      margin-bottom: 6px;
+      color: #334155;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--soft-blue);
+      color: #0f172a;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: #ffffff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--soft-green);
+      color: #166534;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .tag.gold {
+      background: var(--soft-gold);
+      color: var(--gold);
+    }
+
+    .tag.blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 5px solid var(--danger);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 16px 0;
+    }
+
+    .todo {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      border-left: 5px solid var(--teal);
+      background: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 12px;
+    }
+
+    a {
+      color: #1d4ed8;
+    }
+
+    ul { padding-left: 22px; }
+
+    .checklist li {
+      margin: 6px 0;
+      list-style: none;
+    }
+
+    .checklist li::before {
+      content: "☐ ";
+      font-weight: bold;
+      color: var(--teal);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px;
+      font-size: 0.9rem;
+    }
+
+    @media print {
+      nav { display: none; }
+      body { background: white; }
+      .card { box-shadow: none; page-break-inside: avoid; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Chris & Carmen UK Summer Trip</h1>
+    <p>London · Cambridge · Lake District · Edinburgh · Heathrow</p>
+    <p>July 18 – August 1, 2026</p>
+  </header>
+
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#reservations">Reservations</a>
+    <a href="#flights">Flights</a>
+    <a href="#hotels">Hotels</a>
+    <a href="#trains">Rail Plan</a>
+    <a href="#luggage">Luggage</a>
+    <a href="#cambridge">Cambridge</a>
+    <a href="#windermere">Lake District</a>
+    <a href="#edinburgh">Edinburgh</a>
+    <a href="#london">London / Heathrow</a>
+    <a href="#todo">To Do</a>
+    <a href="#packing">Packing</a>
+  </nav>
+
+  <main>
+    <section id="overview" class="card">
+      <h2>Trip Overview</h2>
+      <table>
+        <tr><th>Date</th><th>Location</th><th>Plan</th><th>Notes</th></tr>
+        <tr><td>Sat, Jul 18</td><td>Travel</td><td>Fly Denver to London Heathrow on United UA27.</td><td>Overnight flight.</td></tr>
+        <tr><td>Sun, Jul 19</td><td>London → Cambridge</td><td>Arrive Heathrow, transfer luggage to King’s Cross, tour London, evening train to Cambridge.</td><td>Keep flexible due to flight/immigration timing.</td></tr>
+        <tr><td>Jul 19–24</td><td>Cambridge</td><td>Stay at Clayton Hotel Cambridge.</td><td>Business, university sights, Grantchester walk.</td></tr>
+        <tr><td>Jul 24–28</td><td>Bowness-on-Windermere</td><td>Stay at Lakes Hotel and Spa.</td><td>Lake District hiking segment.</td></tr>
+        <tr><td>Jul 28–31</td><td>Edinburgh</td><td>Stay at Virgin Hotels Edinburgh.</td><td>Old Town, castle, Arthur’s Seat, optional Glasgow day trip.</td></tr>
+        <tr><td>Fri, Jul 31</td><td>London Heathrow area</td><td>Afternoon train from Edinburgh to London, overnight at Hyatt Place Heathrow.</td><td>Departure buffer.</td></tr>
+        <tr><td>Sat, Aug 1</td><td>Travel</td><td>Fly London Heathrow to Denver on United UA26.</td><td>Target Heathrow arrival about 8:00 AM.</td></tr>
+      </table>
+    </section>
+
+    <section id="reservations" class="card">
+      <h2>Master Reservation Reference</h2>
+      <table>
+        <tr>
+          <th>Category</th>
+          <th>Reservation</th>
+          <th>Confirmation / Itinerary</th>
+          <th>Additional Information / Useful Links</th>
+        </tr>
+        <tr>
+          <td>Flight – Chris</td>
+          <td>United UA27 / UA26</td>
+          <td>JLH291</td>
+          <td>Employer-paid reservation. Ticket number: 0167442896655.</td>
+        </tr>
+        <tr>
+          <td>Flight – Carmen</td>
+          <td>United UA27 / UA26</td>
+          <td>JLH633</td>
+          <td>eTicket: 0162104465221. Seat 54J both directions.</td>
+        </tr>
+        <tr>
+          <td>Cambridge Hotel</td>
+          <td>Clayton Hotel Cambridge</td>
+          <td>1710185522771</td>
+          <td>Phone: +44 1223 792888</td>
+        </tr>
+        <tr>
+          <td>Windermere Hotel</td>
+          <td>Lakes Hotel and Spa</td>
+          <td>73460595223828</td>
+          <td>Roof Top Suite with Hot Tub, adults only duplex.</td>
+        </tr>
+        <tr>
+          <td>Edinburgh Hotel</td>
+          <td>Virgin Hotels Edinburgh</td>
+          <td>73460608415697</td>
+          <td>Chamber King Castle View.</td>
+        </tr>
+        <tr>
+          <td>London Heathrow Hotel</td>
+          <td>Hyatt Place London Heathrow Airport</td>
+          <td>73460625667481</td>
+          <td>1 King Bed. Close to Heathrow for return flight.</td>
+        </tr>
+        <tr>
+          <td>Luggage Transfer</td>
+          <td>Heathrow Terminal 2 → King’s Cross</td>
+          <td>TBD</td>
+          <td><a href="https://www.transferbags.com/booking/book-now.php" target="_blank" rel="noopener">TransferBags / Excess Baggage booking</a></td>
+        </tr>
+        <tr>
+          <td>Railcard</td>
+          <td>Two Together Railcard</td>
+          <td>TBD</td>
+          <td><a href="https://secure.railcard.co.uk/purchase/two-together" target="_blank" rel="noopener">Purchase Two Together Railcard</a></td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="flights" class="card">
+      <h2>Flights</h2>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Chris Chappell</h3>
+          <p><span class="tag blue">Corporate booking</span></p>
+          <ul>
+            <li><strong>Confirmation:</strong> JLH291</li>
+            <li><strong>Ticket Number:</strong> 0167442896655</li>
+            <li><strong>Outbound:</strong> UA27, DEN → LHR</li>
+            <li><strong>Return:</strong> UA26, LHR → DEN</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h3>Carmen Rosser</h3>
+          <p><span class="tag blue">Separate personal booking</span></p>
+          <ul>
+            <li><strong>Confirmation:</strong> JLH633</li>
+            <li><strong>eTicket:</strong> 0162104465221</li>
+            <li><strong>Seats:</strong> 54J both directions</li>
+            <li><strong>Outbound:</strong> UA27, DEN → LHR</li>
+            <li><strong>Return:</strong> UA26, LHR → DEN</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Flight Schedule</h3>
+      <table>
+        <tr><th>Flight</th><th>Date</th><th>Route</th><th>Departure</th><th>Arrival</th><th>Notes</th></tr>
+        <tr>
+          <td>United UA27</td>
+          <td>Sat, Jul 18 → Sun, Jul 19</td>
+          <td>Denver (DEN) → London Heathrow (LHR)</td>
+          <td>5:35 PM</td>
+          <td>9:40 AM</td>
+          <td>Boeing 787-9. International overnight flight.</td>
+        </tr>
+        <tr>
+          <td>United UA26</td>
+          <td>Sat, Aug 1</td>
+          <td>London Heathrow (LHR) → Denver (DEN)</td>
+          <td>11:25 AM</td>
+          <td>2:05 PM</td>
+          <td>Boeing 787-9. Plan to arrive LHR around 8:00 AM.</td>
+        </tr>
+      </table>
+
+      <h3>Baggage Notes</h3>
+      <ul>
+        <li>First checked bag included up to 50 lb / 23 kg.</li>
+        <li>Second checked bag listed at $120 each direction for Carmen’s itinerary.</li>
+        <li>Carry-on allowance: one carry-on plus one personal item, subject to fare and airline rules.</li>
+      </ul>
+    </section>
+
+    <section id="hotels" class="card">
+      <h2>Hotels</h2>
+      <table>
+        <tr><th>Dates</th><th>Hotel</th><th>Address</th><th>Confirmation</th><th>Notes</th></tr>
+        <tr>
+          <td>Jul 19–24</td>
+          <td>Clayton Hotel Cambridge</td>
+          <td>27–29 Station Rd, Cambridge, CB1 2FB</td>
+          <td>1710185522771</td>
+          <td>Phone: +44 1223 792888. Very close to Cambridge Station.</td>
+        </tr>
+        <tr>
+          <td>Jul 24–28</td>
+          <td>Lakes Hotel and Spa</td>
+          <td>Kendal Road, Bowness, Windermere, England, LA23 3EP</td>
+          <td>73460595223828</td>
+          <td>Roof Top Suite with Hot Tub, adults only duplex. Booked for Christopher Chappell.</td>
+        </tr>
+        <tr>
+          <td>Jul 28–31</td>
+          <td>Virgin Hotels Edinburgh</td>
+          <td>1 India Buildings, Victoria Street, Edinburgh, Scotland, EH1 2EX</td>
+          <td>73460608415697</td>
+          <td>Chamber King Castle View. Excellent Old Town location.</td>
+        </tr>
+        <tr>
+          <td>Jul 31–Aug 1</td>
+          <td>Hyatt Place London Heathrow Airport</td>
+          <td>The Grove, Bath Road, West Drayton, England, UB7 0DG</td>
+          <td>73460625667481</td>
+          <td>1 King Bed. Good departure-night staging for LHR.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="trains" class="card">
+      <h2>Rail Plan</h2>
+
+      <div class="warning">
+        <strong>Strategy:</strong> Use a Two Together Railcard for Chris and Carmen, then book the major long-distance journeys early. Keep local/commuter-style trips flexible where practical.
+      </div>
+
+      <h3>Rail Booking Priorities</h3>
+      <table>
+        <tr><th>Date</th><th>Route</th><th>Booking Strategy</th><th>Target Timing</th></tr>
+        <tr>
+          <td>Jul 19</td>
+          <td>London King’s Cross → Cambridge</td>
+          <td>Leave flexible; frequent services and arrival-day uncertainty.</td>
+          <td>Evening after London sightseeing.</td>
+        </tr>
+        <tr>
+          <td>Jul 24</td>
+          <td>Cambridge → London King’s Cross → London Euston → Oxenholme → Windermere</td>
+          <td>Book in advance.</td>
+          <td>Target Windermere arrival around 3:00 PM.</td>
+        </tr>
+        <tr>
+          <td>Jul 28</td>
+          <td>Windermere → Oxenholme → Edinburgh Waverley</td>
+          <td>Book in advance.</td>
+          <td>Flexible; arrive Edinburgh with time for dinner.</td>
+        </tr>
+        <tr>
+          <td>Jul 29 or Jul 30</td>
+          <td>Edinburgh ↔ Glasgow day trip</td>
+          <td>Can likely book later or same day; use Railcard if applicable.</td>
+          <td>TBD.</td>
+        </tr>
+        <tr>
+          <td>Jul 31</td>
+          <td>Edinburgh Waverley → London King’s Cross</td>
+          <td>Book in advance, likely LNER.</td>
+          <td>Afternoon train to London.</td>
+        </tr>
+      </table>
+
+      <h3>July 24 Preferred Cambridge → Windermere Plan</h3>
+      <table>
+        <tr><th>Leg</th><th>Approximate Plan</th><th>Notes</th></tr>
+        <tr><td>Cambridge → King’s Cross</td><td>Depart around 10:00 AM</td><td>Frequent service, but coordinate with Euston departure.</td></tr>
+        <tr><td>King’s Cross → Euston</td><td>Allow 45–60 minutes</td><td>Taxi recommended with luggage, even though the stations are close.</td></tr>
+        <tr><td>Euston → Oxenholme Lake District</td><td>Depart around 11:30 AM–12:00 PM</td><td>Main long-distance segment; book seats.</td></tr>
+        <tr><td>Oxenholme → Windermere</td><td>Connect to branch train</td><td>Short local connection.</td></tr>
+        <tr><td>Arrival Windermere</td><td>Around 2:45–3:15 PM</td><td>Taxi or local transport to Lakes Hotel and Spa.</td></tr>
+      </table>
+
+      <h3>Useful Rail Links</h3>
+      <ul>
+        <li><a href="https://www.thetrainline.com" target="_blank" rel="noopener">Trainline</a> — easiest booking interface for multiple operators.</li>
+        <li><a href="https://www.nationalrail.co.uk" target="_blank" rel="noopener">National Rail</a> — official schedule and disruption reference.</li>
+        <li><a href="https://secure.railcard.co.uk/purchase/two-together" target="_blank" rel="noopener">Two Together Railcard purchase page</a></li>
+      </ul>
+    </section>
+
+    <section id="luggage" class="card">
+      <h2>July 19 Luggage Plan</h2>
+      <p><span class="tag gold">Recommended</span> Use Excess Baggage / TransferBags to send luggage from Heathrow Terminal 2 to King’s Cross, then tour London luggage-free.</p>
+
+      <table>
+        <tr><th>Time</th><th>Step</th><th>Notes</th></tr>
+        <tr><td>9:40 AM</td><td>UA27 arrives at Heathrow Terminal 2</td><td>Allow 60–90 minutes for immigration, baggage, customs.</td></tr>
+        <tr><td>~11:00–11:45 AM</td><td>Drop bags with Excess Baggage / TransferBags</td><td>Pre-book for peace of mind.</td></tr>
+        <tr><td>Noon–Evening</td><td>London sightseeing</td><td>Keep plan light due to jet lag.</td></tr>
+        <tr><td>Evening</td><td>Collect bags at King’s Cross</td><td>Better than St Pancras because Cambridge trains usually depart from King’s Cross.</td></tr>
+        <tr><td>Evening</td><td>Train to Cambridge</td><td>Clayton Hotel is near Cambridge Station.</td></tr>
+      </table>
+
+      <p><strong>Booking link:</strong> <a href="https://www.transferbags.com/booking/book-now.php" target="_blank" rel="noopener">TransferBags / Excess Baggage booking</a></p>
+    </section>
+
+    <section id="cambridge" class="card">
+      <h2>Cambridge: July 19–24</h2>
+      <p><span class="tag">Base</span> Clayton Hotel Cambridge, 27–29 Station Rd, Cambridge, CB1 2FB.</p>
+
+      <h3>Suggested Activities</h3>
+      <ul>
+        <li>King’s College Chapel</li>
+        <li>Trinity College and the historic university core</li>
+        <li>Punting on the River Cam</li>
+        <li>The Backs</li>
+        <li>Fitzwilliam Museum</li>
+        <li>The Eagle pub</li>
+        <li>Grantchester Meadows walk and tea at The Orchard Tea Garden</li>
+      </ul>
+
+      <h3>Flexible Cambridge Schedule</h3>
+      <table>
+        <tr><th>Date</th><th>Suggested Focus</th></tr>
+        <tr><td>Jul 19</td><td>Arrive from London, check in, light dinner, recover from travel.</td></tr>
+        <tr><td>Jul 20</td><td>Historic Cambridge core and colleges.</td></tr>
+        <tr><td>Jul 21</td><td>Business commitments / punting / The Backs.</td></tr>
+        <tr><td>Jul 22</td><td>Grantchester Meadows walk.</td></tr>
+        <tr><td>Jul 23</td><td>Flexible day: Ely, London, museums, or business.</td></tr>
+        <tr><td>Jul 24</td><td>Checkout and travel to Windermere.</td></tr>
+      </table>
+    </section>
+
+    <section id="windermere" class="card">
+      <h2>Lake District / Windermere: July 24–28</h2>
+      <p><span class="tag">Base</span> Lakes Hotel and Spa, Kendal Road, Bowness, Windermere, LA23 3EP.</p>
+
+      <h3>Jul 24 — Arrival, Spa, Lakefront Evening</h3>
+      <ul>
+        <li>Train from Cambridge to Windermere, target arrival around 3:00 PM.</li>
+        <li>Check in to Lakes Hotel and Spa.</li>
+        <li>Light walk along Bowness waterfront.</li>
+        <li>Spa / hot tub / easy dinner.</li>
+      </ul>
+
+      <h3>Jul 25 — Wansfell Pike & Troutbeck Circular</h3>
+      <ul>
+        <li><strong>Distance:</strong> about 7.7 miles</li>
+        <li><strong>Elevation Gain:</strong> about 1,922 ft</li>
+        <li><strong>Logistics:</strong> Walk to Bowness Interchange, take 599 bus north to Ambleside.</li>
+        <li><strong>Route:</strong> Start behind the Salutation Hotel in Ambleside, climb Wansfell Pike, continue toward Troutbeck, return via Jenkins Crag / Waterhead area.</li>
+        <li><strong>Post-hike:</strong> The Mortal Man pub in Troutbeck, then 599 bus back toward Bowness.</li>
+      </ul>
+
+      <h3>Jul 26 — Fairfield Horseshoe</h3>
+      <ul>
+        <li><strong>Distance:</strong> about 10.2 miles</li>
+        <li><strong>Elevation Gain:</strong> about 3,116 ft</li>
+        <li><strong>Logistics:</strong> Take the 555 bus from Windermere / Bowness north to Ambleside.</li>
+        <li><strong>Route:</strong> Anti-clockwise loop over Nab Scar, Great Rigg, Fairfield, and the ridges around the horseshoe.</li>
+        <li><strong>Difficulty:</strong> Hard mountain day; exposed ridges, rocky footing, weather-sensitive.</li>
+        <li><strong>Post-hike:</strong> The Golden Rule in Ambleside, then bus back to the hotel spa.</li>
+      </ul>
+
+      <h3>Jul 27 — Catbells Ridge & Derwentwater Shoreline</h3>
+      <ul>
+        <li><strong>Distance:</strong> about 6.5 to 9 miles depending on extension</li>
+        <li><strong>Elevation Gain:</strong> about 1,450 ft</li>
+        <li><strong>Logistics:</strong> 555 bus north to Keswick, walk to Keswick Launch, ferry to Hawes End Pier.</li>
+        <li><strong>Route:</strong> Ascend Catbells ridge, descend south, return via lakeshore paths.</li>
+        <li><strong>Post-hike:</strong> Food and beer in Keswick, then scenic bus ride south.</li>
+      </ul>
+
+      <h3>Jul 28 — Orrest Head Morning Stretch</h3>
+      <ul>
+        <li><strong>Distance:</strong> about 3 miles</li>
+        <li><strong>Purpose:</strong> Short final viewpoint walk before leaving for Edinburgh.</li>
+      </ul>
+
+      <div class="warning">
+        <strong>Mountain safety:</strong> Treat Fairfield Horseshoe as a serious mountain day. Carry waterproof layers, warm layer, offline map, battery backup, water, food, and a turnaround plan if weather deteriorates.
+      </div>
+    </section>
+
+    <section id="edinburgh" class="card">
+      <h2>Edinburgh: July 28–31</h2>
+      <p><span class="tag">Base</span> Virgin Hotels Edinburgh, 1 India Buildings, Victoria Street, Edinburgh, EH1 2EX.</p>
+
+      <h3>Jul 28 — Arrival Evening</h3>
+      <ul>
+        <li>Train from Windermere / Oxenholme to Edinburgh Waverley.</li>
+        <li>Check in to Virgin Hotels Edinburgh.</li>
+        <li>Evening walk: Victoria Street, Royal Mile, Grassmarket, castle views.</li>
+      </ul>
+
+      <h3>Jul 29 — Historic Edinburgh</h3>
+      <ul>
+        <li>Edinburgh Castle</li>
+        <li>Royal Mile</li>
+        <li>St Giles’ Cathedral</li>
+        <li>Victoria Street</li>
+        <li>National Museum of Scotland</li>
+        <li>Optional: Scotch Whisky Experience</li>
+      </ul>
+
+      <h3>Jul 30 — Arthur’s Seat / Dean Village / Optional Glasgow</h3>
+      <ul>
+        <li>Option A: Arthur’s Seat hike in Holyrood Park, then Dean Village and Water of Leith.</li>
+        <li>Option B: Edinburgh ↔ Glasgow day trip by rail.</li>
+        <li>Decision can remain flexible until closer to the date.</li>
+      </ul>
+
+      <h3>Jul 31 — Edinburgh to London</h3>
+      <ul>
+        <li>Breakfast near hotel.</li>
+        <li>Afternoon LNER-style route: Edinburgh Waverley → London King’s Cross.</li>
+        <li>Transfer to Hyatt Place London Heathrow Airport.</li>
+      </ul>
+    </section>
+
+    <section id="london" class="card">
+      <h2>London / Heathrow</h2>
+
+      <h3>Jul 19 — Arrival Day London Stop</h3>
+      <ul>
+        <li>Arrive Heathrow Terminal 2 at 9:40 AM.</li>
+        <li>Use TransferBags / Excess Baggage for luggage transfer to King’s Cross.</li>
+        <li>Keep sightseeing light due to jet lag.</li>
+        <li>Possible route: Westminster → St James’s Park → Buckingham Palace → Covent Garden → King’s Cross.</li>
+        <li>Evening train to Cambridge.</li>
+      </ul>
+
+      <h3>Jul 31 — Final London Overnight</h3>
+      <ul>
+        <li>Arrive London by train from Edinburgh.</li>
+        <li>Transfer to Hyatt Place London Heathrow Airport.</li>
+        <li>Early dinner / repack / sleep.</li>
+      </ul>
+
+      <h3>Aug 1 — Departure Morning</h3>
+      <table>
+        <tr><th>Time</th><th>Plan</th></tr>
+        <tr><td>7:15 AM</td><td>Breakfast / final packing.</td></tr>
+        <tr><td>7:45 AM</td><td>Leave hotel for Heathrow.</td></tr>
+        <tr><td>~8:00 AM</td><td>Arrive Heathrow Terminal 2.</td></tr>
+        <tr><td>11:25 AM</td><td>United UA26 departs for Denver.</td></tr>
+      </table>
+    </section>
+
+    <section id="todo" class="card">
+      <h2>To Do / Pre-Trip Tasks</h2>
+      <div class="todo">
+        <ul class="checklist">
+          <li>Purchase Two Together Railcard: <a href="https://secure.railcard.co.uk/purchase/two-together" target="_blank" rel="noopener">secure.railcard.co.uk/purchase/two-together</a></li>
+          <li>Book Cambridge → Windermere rail tickets for Jul 24, target Windermere arrival around 3:00 PM.</li>
+          <li>Book Windermere → Edinburgh rail tickets for Jul 28.</li>
+          <li>Book Edinburgh → London rail tickets for Jul 31.</li>
+          <li>Reserve Heathrow Terminal 2 → King’s Cross luggage transfer: <a href="https://www.transferbags.com/booking/book-now.php" target="_blank" rel="noopener">transferbags.com booking page</a></li>
+          <li>Verify seat assignments for both United reservations.</li>
+          <li>Ask United to link Chris and Carmen’s separate reservations if possible.</li>
+          <li>Download Trainline app.</li>
+          <li>Download United app and add both confirmation numbers.</li>
+          <li>Download offline maps for Lake District hikes.</li>
+          <li>Verify Lake District 555 and 599 bus schedules closer to travel date.</li>
+          <li>Verify Keswick Launch ferry schedule for Catbells day.</li>
+          <li>Check UK weather forecast one week before departure.</li>
+          <li>Add restaurant reservations if desired.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="packing" class="card">
+      <h2>Packing & Gear Checklist</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Travel</h3>
+          <ul>
+            <li>Passports</li>
+            <li>Flight confirmations: JLH291 and JLH633</li>
+            <li>Hotel confirmations</li>
+            <li>Rail tickets and Railcard</li>
+            <li>Travel insurance info</li>
+            <li>Credit cards with no foreign transaction fee</li>
+            <li>UK plug adapter</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h3>Hiking</h3>
+          <ul>
+            <li>Waterproof shell</li>
+            <li>Warm mid-layer</li>
+            <li>Trail shoes or boots with good grip</li>
+            <li>Daypack</li>
+            <li>Water bottles / hydration</li>
+            <li>Snacks / trail lunch</li>
+            <li>Offline maps</li>
+            <li>Battery bank</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h3>City / Daily Use</h3>
+          <ul>
+            <li>Comfortable walking shoes</li>
+            <li>Light rain jacket</li>
+            <li>Layered clothing</li>
+            <li>Contactless payment card / phone wallet</li>
+            <li>Small crossbody or day bag</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Notes for Future Updates</h2>
+      <p>This itinerary is a working planning page. Add train booking references, restaurant reservations, final hike routes, maps, and emergency contacts as details are confirmed.</p>
+      <p class="small">Last updated: May 29, 2026.</p>
+    </section>
+  </main>
+
+  <footer>
+    Chris & Carmen UK Summer Trip · Draft itinerary page
+  </footer>
+</body>
+</html>
